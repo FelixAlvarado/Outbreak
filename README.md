@@ -24,4 +24,9 @@ In Outbreak, users will be able to:
 
 Outbreak will also include: 
 
-- [ ] instructions stating how the simulation works
+- [ ] Instructions stating how the simulation works
+
+### Wireframes
+
+
+
