@@ -14,4 +14,14 @@ When a person has more adjacent people than the zombie has adjacent zombies, the
 
 ### MVPS
 
-- [ ] 
+In Outbreak, users will be able to:
+
+- [ ] Start, pause, and reset the simulation
+- [ ] Modify the speed of the simulation
+- [ ] Modify the starting number of people and zombies
+- [ ] Start the simulation with default percentages
+- [ ] Modify the survival and find percentages
+
+Outbreak will also include: 
+
+- [ ] instructions stating how the simulation works
