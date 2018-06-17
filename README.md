@@ -1,4 +1,4 @@
-# Zombie-Outbreak
+# Outbreak
 
 ### Overview
 
@@ -12,3 +12,6 @@ If a person and a zombie are adjacent to one another, there is a 50% change of t
 
 When a person has more adjacent people than the zombie has adjacent zombies, their survival percentages are tweeked to be in their favor. Their survival percentages decreased if the zombie has more adjacent zombies than the person has adjacent people.
 
+### MVPS
+
+- [ ] 
