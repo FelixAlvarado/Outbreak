@@ -55,7 +55,6 @@ The following files will be used for making the game:
 ### Timeline
 
 ##### Over the weekend: 
-
 Have webpack and canvas initially set up
 
 ##### Day1: 
@@ -85,7 +84,6 @@ Add finished touches for app appeal:
 ### Bonus Features 
 
 If there is time, I will add the following features: 
-
 - [ ] Energy levels that can decrease if the person encounters a zombie. Would affect thier survaval rate
 - [ ] Weapon find percentages that increase a person's chance of survival
 - [ ] A mutation attribute that would increase the zombie's chance of infection
