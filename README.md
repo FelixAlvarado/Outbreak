@@ -28,5 +28,11 @@ Outbreak will also include:
 
 ### Wireframes
 
+Outbreak will be a single page with different buttons and inputs that the user can use.
 
+Start, pause, reset buttons, as well as a speed toggle will be on top of the canvas display. 
+
+Underneath, there will be an explaination of the percentages. The percentage inputs will already be filled out with default values that the user can change. If there are incorrect or blank values, the user will be alerted and the simulation won't start. The user can also press the reset button to revert back to default settings.
+
+![](https://s22.postimg.cc/ekiv7z041/wireframe_2.png)
 
