@@ -36,3 +36,57 @@ Underneath, there will be an explaination of the percentages. The percentage inp
 
 ![](https://s22.postimg.cc/ekiv7z041/wireframe_2.png)
 
+### Architecture and Technologies 
+
+* Vanilla Javascicpt for game logic
+
+* HTML5 Canvas for rendering
+
+* Webpack for bundling
+
+The following files will be used for making the game:
+
+* grid.js: used for updating the display grid 
+
+* survival.js: holds the logic for what happens during a player/zombie encounter 
+
+* game.js: used for updating the positions of each field item
+
+### Timeline
+
+##### Over the weekend: 
+
+Have webpack and canvas initially set up
+
+##### Day1: 
+Write the grid and game logic, being sure that items are moving and render at a set interval:
+- [ ] Canvas is rendering items properly
+- [ ] Grid renders items at random positions
+- [ ] Items on the field move at a set interval 
+
+##### Day2: 
+Complete survival logic so zombie encounters are handled:
+- [ ] Human/Zombie encounter can result in all three outcome
+- [ ] There is a start user interaction
+
+##### Day3: 
+Add aditional user features:
+- [ ] There is a pause and reset button
+- [ ] The user can modify the speed of the simulation
+- [ ] Game survival percentages are changed based on user input 
+
+##### Day4: 
+Add finished touches for app appeal: 
+- [ ] CSS makes the app look clean and polished 
+- [ ] Alerts are added for if the user puts incorrect values 
+- [ ] There is a reset value button 
+- [ ] Explainations and overviews are added
+
+### Bonus Features 
+
+If there is time, I will add the following features: 
+
+- [ ] Energy levels that can decrease if the person encounters a zombie. Would affect thier survaval rate
+- [ ] Weapon find percentages that increase a person's chance of survival
+- [ ] A mutation attribute that would increase the zombie's chance of infection
+- [ ] The ability to increase the grid size
