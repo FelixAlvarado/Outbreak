@@ -2,9 +2,20 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+
+    <link rel="stylesheet" href='./stylesheets/canvas.css'/>
     <title></title>
   </head>
   <body>
-
+    <div id="root">
+      <canvas class="canvas" id="canvas"></canvas>
+    </div>
+    <script src="./dist/bundle.js"></script>
+    <script>
+    var canvas = document.getElementById('canvas');
+    var c = canvas.getContext('2d');
+    c.fillStyle = "red";
+    c.fillRect(100,100,100,100);
+    </script>
   </body>
 </html>
