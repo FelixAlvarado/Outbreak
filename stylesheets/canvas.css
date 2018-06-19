@@ -1,11 +1,14 @@
-#root {
-  width: 100vw;
-  height: 100vh;
+
+
+.cstyle {
+  border: 2px black solid;
+  /* margin: auto; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.canvas {
-  margin: auto;
-  width: 800px;
-  height: 600px;
-  border: 2px black solid;
+.none {
+  display: none;
 }

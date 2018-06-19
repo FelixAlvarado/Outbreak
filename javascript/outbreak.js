@@ -1,9 +1,13 @@
-const Grid = require('./grid');
+import Grid from './grid';
+import Game from './game';
 
 document.addEventListener("DOMContentLoaded", function () {
-  var canvas = document.getElementById('canvas');
-  var ctx = canvas.getContext('2d');
+  let canvas = document.getElementById('canvas');
+  let ctx = canvas.getContext('2d');
   // ctx.fillStyle = "red";
   // ctx.fillRect(100,100,100,100);
-  new Grid().draw(ctx);
+  // let zombie = document.getElementById('zombie');
+  const grid = new Grid();
+  const game = new Game(grid,ctx);
+  setInterval(game.startSimulation(),1000);
 });
