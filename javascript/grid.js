@@ -21,7 +21,7 @@ generateGrid () {
   return grid;
 }
 
-  getMoves(grid,x,y) {
+  getMoves(grid,y,x) {
     let result = [];
     if (y > 0 && grid[y-1][x] === 'b') {result.push([-1,0]);}
     if (y < 29 && grid[y+1][x] === 'b') {result.push([1,0]);}

@@ -9,5 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // let zombie = document.getElementById('zombie');
   const grid = new Grid();
   const game = new Game(grid,ctx);
-  game.startSimulation();
+  const start = document.getElementById('start');
+  const stop = document.getElementById('stop');
+  start.addEventListener('click',() => {
+    game.startSimulation();
+  });
+  // working on clearing interval
+  // stop.addEventListener('click',() => {
+  //   clearInterval(game.StartSimulation());
+  //   game.StopInterval
+  // });
 });
