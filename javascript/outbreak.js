@@ -9,5 +9,5 @@ document.addEventListener("DOMContentLoaded", function () {
   // let zombie = document.getElementById('zombie');
   const grid = new Grid();
   const game = new Game(grid,ctx);
-  setInterval(game.startSimulation(),1000);
+  game.startSimulation();
 });

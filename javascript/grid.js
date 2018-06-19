@@ -23,11 +23,10 @@ generateGrid () {
 
   getMoves(grid,x,y) {
     let result = [];
-    console.log(grid);
+    if (y > 0 && grid[y-1][x] === 'b') {result.push([-1,0]);}
+    if (y < 29 && grid[y+1][x] === 'b') {result.push([1,0]);}
     if (x > 0 && grid[y][x-1] === 'b') {result.push([0,-1]);}
     if (x < 39 && grid[y][x+1] === 'b') {result.push([0,1]);}
-    if (y > 0 && grid[y-1][x] === 'b') {result.push([-1,0]);}
-    if (y < 29 && grid[y + 1][x] === 'b') {result.push([1,0]);}
     return result;
   }
 

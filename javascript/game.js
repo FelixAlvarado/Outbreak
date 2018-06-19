@@ -7,17 +7,19 @@ class Game {
   move() {
     this.grid.grid.forEach((arr, i) =>{
       arr.forEach((space, j) => {
-        let moves = this.grid.getMoves(this.grid,i,j);
-        if (moves.length > 0) {
+        if (space !== 'b'){
+          let moves = this.grid.getMoves(this.grid.grid,j,i);
           let direction = Math.floor(Math.random() * moves.length);
-          let oldSpot = this.grid[i][j];
-          let newSpot = this.grid[i + moves[direction][0]][j + moves[direction[1]]];
-          this.grid[i][j] = newSpot;
-          this.grid[i + moves[direction][0]][j + moves[direction[1]]] = oldSpot;
-        }
+          let move = moves[direction];
+          let oldSpot = this.grid.grid[i][j];
+          let newSpot = this.grid.grid[i + move[0]][j + move[1]];
+          this.grid.grid[i][j] = newSpot;
+          this.grid.grid[i + move[0]][j + move[1]] = oldSpot;
+          }
 
       });
     });
+
   }
 
   startSimulation() {
