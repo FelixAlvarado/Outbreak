@@ -22,4 +22,23 @@ document.addEventListener("DOMContentLoaded", function () {
   reset.addEventListener('click',() => {
     game.resetSimulation();
   });
+
+
+  let instructions = document.getElementById("modal-background");
+  let openI = document.getElementById("instructions");
+  let close = document.getElementById("close");
+
+  openI.addEventListener("click", () => {
+    instructions.style.display = "block";
+  });
+  //find out why this is null
+  // close.addEventListener("click", () =>{
+  //   instructions.style.display = "none";
+  // });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === instructions){
+      instructions.style.display = "none";
+    }
+  });
 });

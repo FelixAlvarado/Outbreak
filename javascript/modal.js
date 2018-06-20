@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let close = document.getElementById("close");
 
   openI.addEventListener("click", () => {
+    console.log('made it');
     instructions.style.display = "block";
   });
 
