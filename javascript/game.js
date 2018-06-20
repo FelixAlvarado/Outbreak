@@ -4,6 +4,7 @@ class Game {
   constructor(grid,ctx){
     this.grid = grid;
     this.ctx = ctx;
+    // this.process = setInterval(() => this.procedures);
   }
 
   move() {
@@ -47,7 +48,7 @@ class Game {
     if (zombies.length === 0 && moves.length > 0){
       let move = moves[Math.floor(Math.random() * moves.length)];
       let chance = Math.random()*100;
-      if(chance <= .5 ){this.grid.grid[y + move[0]][x + move[1]] = 'h';}
+      if(chance <= 50 ){this.grid.grid[y + move[0]][x + move[1]] = 'h';}
     }
   }
 
@@ -72,16 +73,28 @@ class Game {
     }
   }
 
-  startSimulation(){
-    setInterval(this.process.bind(this),100);
-    // this.process();
-  }
+    startSimulation(){
 
-  process() {
-    this.grid.draw(this.ctx);
-    this.move();
-    this.encounter();
-  }
+      this.process = setInterval(this.procedures.bind(this), 100);
+    }
+
+    pauseSimulation() {
+
+      clearInterval(this.process);
+    }
+
+    resetSimulation() {
+      this.ctx.clearRect(0,0,800,600);
+      clearInterval(this.process);
+      this.grid.grid = this.grid.generateGrid();
+    }
+
+
+    procedures() {
+      this.grid.draw(this.ctx);
+      this.move();
+      this.encounter();
+    }
 }
 
 export default Game;
