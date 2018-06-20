@@ -63,7 +63,7 @@ class Game {
     if (zombies.length === 0 && moves.length > 0){
       let move = moves[Math.floor(Math.random() * moves.length)];
       let chance = Math.random()*100;
-      if(chance <= .5){this.grid.grid[y + move[0]][x + move[1]] = 'h';}
+      if(chance <= this.survivalFind){this.grid.grid[y + move[0]][x + move[1]] = 'h';}
     }
   }
 
@@ -74,23 +74,32 @@ class Game {
       let chance = Math.random()*100;
       let zombies = Survival.getZombies(this.grid.grid,y,x);
       if (humans.length > zombies.length){
-        if(chance < 30) {this.grid.grid[human[0]][human[1]] = 'z';}
-        if (chance >= 30 && chance < 65) {this.grid.grid[y][x] = 'b';}
+        if(chance < this.personInfection) {this.grid.grid[human[0]][human[1]] = 'z';}
+        if (chance >= this.personInfection && chance < this.personInfection + this.personKill) {this.grid.grid[y][x] = 'b';}
       }
       if (humans.length === zombies.length){
-        if(chance < 50) {this.grid.grid[human[0]][human[1]] = 'z';}
-        if (chance >= 50 && chance < 75) {this.grid.grid[y][x] = 'b';}
+        if(chance < this.equalInfection) {this.grid.grid[human[0]][human[1]] = 'z';}
+        if (chance >= this.equalInfection && chance < this.equalInfection + this.equalKill)
+        console.log(this.equalInfection + this.equalKill); {this.grid.grid[y][x] = 'b';}
       }
       if (humans.length < zombies.length){
-        if(chance < 70) {this.grid.grid[human[0]][human[1]] = 'z';}
-        if (chance >= 70 && chance < 85) {this.grid.grid[y][x] = 'b';}
+        if(chance < this.zombieInfection) {this.grid.grid[human[0]][human[1]] = 'z';}
+        if (chance >= this.zombieInfection && chance < this.zombieInfection + this.zombieKill) {this.grid.grid[y][x] = 'b';}
       }
     }
   }
 
-    startSimulation(){
+    startSimulation(equalInfection, equalKill, personInfection,personKill, zombieInfection, zombieKill,survivalFind, simSpeed){
+      this.equalInfection = parseInt(equalInfection.value);
+      this.equalKill = parseInt(equalKill.value);
+      this.personInfection = parseInt(personInfection.value);
+      this.personKill = parseInt(personKill.value);
+      this.zombieInfection = parseInt(zombieInfection.value);
+      this.zombieKill = parseInt(zombieKill.value);
+      this.survivalFind = parseInt(survivalFind.value);
+      this.simSpeed = parseInt(simSpeed.value * 1000);
       clearInterval(this.process);
-      this.process = setInterval(this.procedures.bind(this), 100);
+      this.process = setInterval(this.procedures.bind(this), this.simSpeed);
     }
 
     pauseSimulation() {

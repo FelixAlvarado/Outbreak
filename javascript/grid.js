@@ -5,8 +5,10 @@
 
 
 class Grid {
-  constructor() {
+  constructor(zombie, human) {
     this.grid = this.generateGrid();
+    this.zombie = zombie;
+    this.human = human;
   }
 
 generateGrid () {
@@ -35,16 +37,17 @@ generateGrid () {
       arr.forEach((space, j) => {
         switch (space){
           case 'z':
-          ctx.fillStyle = "red";
-          // ctx.drawImage(zombie,j*20,i*20,20,20);
-          ctx.fillRect(j*20,i*20,20,20);
+          // ctx.fillStyle = "red";
+          ctx.drawImage(this.zombie,j*20,i*20,20,20);
+          // ctx.fillRect(j*20,i*20,20,20);
           break;
           case 'h':
-          ctx.fillStyle = "black";
-          ctx.fillRect(j*20,i*20,20,20);
+          // ctx.fillStyle = "black";
+          ctx.drawImage(this.human,j*20,i*20,20,20);
+          // ctx.fillRect(j*20,i*20,20,20);
           break;
           case 'b':
-          ctx.fillStyle = "white";
+          ctx.fillStyle = "#fcfcfc";
           ctx.fillRect(j*20,i*20,20,20);
           break;
         }

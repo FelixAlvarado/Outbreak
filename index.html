@@ -3,24 +3,63 @@
   <head>
     <meta charset="utf-8">
 
-    <link rel="stylesheet" href='./stylesheets/canvas.css'/>
+    <link rel="stylesheet" href='./assets/canvas.css'/>
 
     <title></title>
     <script src="./bundle.js"></script>
   </head>
   <body>
-      <button id="instructions">Instructions</button>
+      <button id="openI">Instructions</button>
       <button id="start">Start</button>
       <button id="pause">Pause</button>
       <button id="reset">Reset</button>
+      <button id="openC">Customize Simulation</button>
       <canvas class="cstyle" width="800" height="600" id="canvas"></canvas>
 
-      <div class="modal-background">
-        <div class="instruction-modal"><span class="close">&times;</span>hello
+      <div class="instruction-background" id="instruction-background">
+        <div class="instruction-modal"><span class="close" id="close">&times;</span>instruction
+        </div>
+      </div>
+
+      <div class="customize-background" id="customize-background">
+        <div class="customize-modal">
+          <span class="closeC" id="closeC">&times;</span>
+          <br/>
+          <br/>
+          <table class="table">
+            <tr>
+              <th></th>
+              <th>Infection Chance</th>
+              <th>Zombie Kill Chance</th>
+              <th>Person Escape Change</th>
+            </tr>
+            <tr >
+              <td>Equal Encounter</td>
+              <td><input id="equalInfection" /></td>
+              <td><input id="equalKill" /></td>
+              <td><input id="equalEscape" /></td>
+            </tr>
+            <tr>
+              <td>Person Advantage</td>
+              <td><input id="personInfection" /></td>
+              <td><input id="personKill" /></td>
+              <td><input id="personEscape" /></td>
+            </tr>
+            <tr>
+              <td>Zombie Advantage</td>
+              <td><input id="zombieInfection" /></td>
+              <td><input id="zombieKill" /></td>
+              <td><input id="zombieEscape" /></td>
+            </tr>
+          </table>
+          Survivor Find % <input id="survivalFind"/>
+          Simulation Speed (seconds) <input id="simSpeed"/>
+          <button id="resetSettings">Reset Settings</button>
         </div>
       </div>
       <div class="none">
-          <img id="zombie" src="https://s22.postimg.cc/mzd73w5pd/zombie.jpg"/>
+          <img id="zombie" src="./assets/zombie.jpg"/>
+          <img id="human" src="./assets/human.jpg"/>
       </div>
   </body>
 </html>
