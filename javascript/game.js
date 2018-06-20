@@ -45,6 +45,12 @@ class Game {
     }
   }
 
+  updateGrid(x,y) {
+    const newX = (x % 20) / 20;
+    const newY = (y % 20) / 20;
+    this.grid.grid[newY][newX] = 'z';
+  }
+
   encounter() {
     const tempGrid = JSON.parse(JSON.stringify( this.grid.grid ));
     this.grid.grid.forEach((arr, i) =>{

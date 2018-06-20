@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   canvas.addEventListener("click", (e) => {
     const x = e.clientX - canvas.offsetLeft + 400;
     const y = e.clientY - canvas.offsetTop + 300;
-    Util.circle(ctx,x ,y);
+    game.updateGrid(x,y);
   });
 
   start.addEventListener('click',() => {

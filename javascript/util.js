@@ -6,8 +6,8 @@ if(parseInt(equalInfection.value) + parseInt(equalKill.value) + parseInt(equalEs
 return false;
 };
 
-export const circle = (ctx,x,y) => {
-    ctx.beginPath();
-    ctx.arc(x, y, 20, 0, 2 * Math.PI);
-    ctx.stroke();
-};
+// export const circle = (ctx,x,y) => {
+//     ctx.beginPath();
+//     ctx.arc(x, y, 20, 0, 2 * Math.PI);
+//     ctx.stroke();
+// };
