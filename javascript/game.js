@@ -8,9 +8,13 @@ class Game {
   }
 
   move() {
+    let zombieCount = 0;
+    let humanCount = 0;
     const tempGrid = JSON.parse(JSON.stringify( this.grid.grid ));
     tempGrid.forEach((arr, i) =>{
       arr.forEach((space, j) => {
+        if (space === 'z'){zombieCount++;}
+        if (space === 'h'){humanCount++;}
         if (space !== 'b'){
           let moves = this.grid.getMoves(tempGrid,i,j);
           if(moves.length > 0){
@@ -27,7 +31,23 @@ class Game {
 
       });
     });
+    this.endGame(humanCount,zombieCount);
+  }
 
+  endGame(human,zombie) {
+    if (human === 0){
+      // this.ctx.clearRect(0,0,800,600);
+      clearInterval(this.process);
+      this.grid.grid = this.grid.generateGrid();
+      this.ctx.font = "75px Arial";
+      this.ctx.fillStyle = "blue";
+      this.ctx.fillText("Zombies Win!",170,285);
+    }
+    if (zombie === 0){
+      this.ctx.clearRect(0,0,800,600);
+      this.ctx.font = "30px Arial";
+      this.ctx.fillText("The People Survived!",10,50);
+    }
   }
 
   encounter() {
@@ -74,8 +94,9 @@ class Game {
   }
 
     startSimulation(){
-
+      clearInterval(this.process);
       this.process = setInterval(this.procedures.bind(this), 100);
+      this.endGame(0,1);
     }
 
     pauseSimulation() {
