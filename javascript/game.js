@@ -35,18 +35,13 @@ class Game {
   }
 
   endGame(human,zombie) {
-    if (human === 0){
-      // this.ctx.clearRect(0,0,800,600);
+    if (human === 0  || zombie === 0){
       clearInterval(this.process);
       this.grid.grid = this.grid.generateGrid();
       this.ctx.font = "75px Arial";
       this.ctx.fillStyle = "blue";
-      this.ctx.fillText("Zombies Win!",170,285);
-    }
-    if (zombie === 0){
-      this.ctx.clearRect(0,0,800,600);
-      this.ctx.font = "30px Arial";
-      this.ctx.fillText("The People Survived!",10,50);
+      if (human === 0) {this.ctx.fillText("Zombies Win!",170,320);}
+      if (zombie === 0) {this.ctx.fillText("The People Survived!",40,320);}
     }
   }
 
@@ -68,7 +63,7 @@ class Game {
     if (zombies.length === 0 && moves.length > 0){
       let move = moves[Math.floor(Math.random() * moves.length)];
       let chance = Math.random()*100;
-      if(chance <= 50 ){this.grid.grid[y + move[0]][x + move[1]] = 'h';}
+      if(chance <= .5){this.grid.grid[y + move[0]][x + move[1]] = 'h';}
     }
   }
 
@@ -96,7 +91,6 @@ class Game {
     startSimulation(){
       clearInterval(this.process);
       this.process = setInterval(this.procedures.bind(this), 100);
-      this.endGame(0,1);
     }
 
     pauseSimulation() {
