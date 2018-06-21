@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   peopleButton.addEventListener("click", () => {
     clickItem = 'h';
+
   });
 
   zombieButton.addEventListener("click", () => {
@@ -26,8 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   canvas.addEventListener("click", (e) => {
     if (clickItem !== 'none') {
-    const x = e.clientX - canvas.offsetLeft + 400;
-    const y = e.clientY - canvas.offsetTop + 300;
+    const x = e.clientX - canvas.offsetLeft;
+    const y = e.clientY - canvas.offsetTop;
+    console.log(x);
+    console.log(y);
     game.updateGrid(x,y, clickItem);
     }
   });

@@ -4,17 +4,18 @@
     <meta charset="utf-8">
 
     <link rel="stylesheet" href='./assets/canvas.css'/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Kirang+Haerang|Puritan" rel="stylesheet">
     <title></title>
     <script src="./bundle.js"></script>
   </head>
   <body>
+    <button id="openI"><i class="	fa fa-info" style="font-size:30px;"></i></button>
     <div>
     <h1 class="center big">Outbreak</h1>
     <p class="center small"> Zombies are on the loose! Watch as an outbreak unfolds and see if the survivors can kill off the zombies or become infected themselves</p>
     <br/>
   </div>
-    <button id="openI">Instructions</button>
   <!-- <div class="top-buttons">
     <div>
        <div class="inner-left"> -->
@@ -32,22 +33,33 @@
     </div>
   </div> -->
       <canvas class="cstyle" width="800" height="600" id="canvas"></canvas>
-    </div>
-      <button id="openC">Customize Simulation</button>
-      <button id="addPeople">Add People</button>
-      <button id="addZombies">Add Zombies</button>
-
-
+    <ul class="button-list">
+      <li><button id="openC">Customize Simulation</button></li>
+      <li><button id="addPeople">Add People</button></li>
+      <li><button id="addZombies">Add Zombies</button></li>
+    </ul>
+</div>
       <div class="instruction-background" id="instruction-background">
-        <div class="instruction-modal"><span class="close" id="close">&times;</span>instruction
+        <div class="instruction-modal"><span class="close" id="close">&times;</span>
+          <h1 class="center2">Instructions</h1>
+          <p class="info-par">Outbreak is a zombie simulation inspired by Conways Game of Life, which featured cell growth and death based on the amount of neighbors a cell had. In outbreak, both zombies and people are running around on screen, with their encounters resulting in the people being infected and turning into a zombie themselves, the people escaping uninffected, or the zombie getting killed. These outcomes very greatly on the amount of allies each party has (if a person has two human neighbors and a zombie only has one zomebie neighbor, then there is a higher chance of that person killing the zombie etc). The following describes what each button does:</p>
+          <ul class="info-list">
+            <li>Start- starts the simulation</li>
+            <li>Pause- pauses the simulation. You can continue the simulation by pressing start.</li>
+            <li>Reset- resets the simulation. Pressing start right after will start the simulation from the beginning</li>
+            <li>Customize Simulation- This opens up a modal where you can customize the stastics of zombie human encounters, the chance of someone finding a new survivor, as well of the speed of each phase. Each row in the table must add up to 100, and the survival find rate must be between 0 and 100. When you're finished customizing, close the modal and press start to see your changes</li>
+            <li>Add People- pressing this button allows you to people a new person anywhere on the screen while the simulation is running</li>
+            <li>Add Zombies- similar to adding people, it lets you add zombies instead</li>
+          </ul>
         </div>
       </div>
 
       <div class="customize-background" id="customize-background">
         <div class="customize-modal">
           <span class="closeC" id="closeC">&times;</span>
-          <br/>
-          <br/>
+          <h1 class="center2">Customization</h1>
+          <p class="info-par3">Customize whatever you'd like to sway the outcome of the outbreak. Remember that all rows in the table must add up to 100. Make the Survivor Find rate a high number to see some mayhem!</p>
+
           <table class="table">
             <tr>
               <th></th>
@@ -74,9 +86,11 @@
               <td><input id="zombieEscape" /></td>
             </tr>
           </table>
-          Survivor Find % <input id="survivalFind"/>
+          <p class="info-par2">
+          Survivor Find Rate <input id="survivalFind"/>
           Simulation Speed (seconds) <input id="simSpeed"/>
           <button id="resetSettings">Reset Settings</button>
+        </p>
         </div>
       </div>
       <div class="none">

@@ -16,6 +16,10 @@ body {
   transform: translate(-50%, -50%); */
 }
 
+.cstyle:hover {
+  cursor: crosshair;
+}
+
 .none {
   display: none;
 }
@@ -50,15 +54,18 @@ body {
 background-color: #fefefe;
 margin: 15% auto;
 padding: 20px;
-border: 1px solid #888;
+border: 2px solid black;
 width: 80%;
+padding: 0px;
+border-radius: 10px;
 }
 
 .customize-modal {
 background-color: #fefefe;
+border-radius: 10px;
 margin: 15% auto;
 padding: 20px;
-border: 1px solid #888;
+border: 2px solid black;
 width: 700px;
 padding: 0px 0px 33px 0px;
 }
@@ -81,6 +88,7 @@ padding: 0px 0px 33px 0px;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    height: 15px;
 }
 
 .closeC:hover {
@@ -125,7 +133,14 @@ input {
   margin: 0 auto;
   text-align: center;
   color: white;
+}
 
+.center2 {
+  margin: 0 auto;
+  text-align: center;
+  color: black;
+    font-family: Puritan;
+    padding-top: 20px;
 }
 
 .big {
@@ -153,8 +168,15 @@ float: left;
 
 #openI {
   position: absolute;
-  left: 90%;
-  bottom: 95%;
+  /* left: 93%;
+  bottom: 90%; */
+  top: 13px;
+  right: 13px;
+  background-color: #3d3a3d;
+  height: 60px;
+  width: 60px;
+  border-radius: 50px;
+  border: .5px black solid;
 }
 
 .button-list {
@@ -162,11 +184,92 @@ float: left;
 }
 
 .button-list li button{
-  height: 200px;
-  width: 200px;
+  height: 200.5px;
+  width: 150px;
 
 }
 
+
 .canvas-button-holder {
   display: flex;
+  width: 1104px;
+  margin: auto;
+}
+
+ ul {
+   padding: 0;
+   margin: 0;
+   margin-top: 1px;
+ }
+
+ button {
+   padding: 0;
+   border: .5px black solid;
+   font-family: Puritan;
+   font-size: 18px;
+    color: white;
+ }
+
+ button:focus {
+   outline:0;
+ }
+
+#start, #openC, #addZombies, #reset {
+ background-color: #4f1d4f;
+}
+
+#start:hover, #openC:hover, #addZombies:hover, #reset:hover, #resetSettings:hover {
+  cursor: pointer;
+  background-color: #a020a0;
+}
+
+#pause,#addPeople  {
+  background-color: #3d3a3d;
+}
+
+#pause:hover, #addPeople:hover, #openI:hover {
+  background-color: #696770;
+  cursor: pointer;
+}
+
+.info-par {
+  font-family: Puritan;
+  padding: 0px 20px  0px 20px;
+}
+.info-par3 {
+  font-family: Puritan;
+  padding: 0px 20px  0px 20px;
+  text-align: center;
+}
+
+.info-par2 {
+  font-family: Puritan;
+  padding: 0px 20px  0px 20px;
+  width: 590px;
+  margin: 5px auto;
+}
+
+.info-list {
+  padding-left: 35px;
+  padding-bottom: 20px;
+}
+
+.info-list li{
+  font-family: Puritan;
+}
+
+#survivalFind{
+  margin-right: 26px;
+}
+
+#simSpeed {
+  margin-right: 27px;
+}
+
+#resetSettings {
+  background-color: #4f1d4f;
+  font-size: 14px;
+  width: 100px;
+  position: relative;
+  right: -2px;
 }

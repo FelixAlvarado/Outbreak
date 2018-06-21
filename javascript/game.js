@@ -69,7 +69,7 @@ class Game {
     if (zombies.length === 0 && moves.length > 0){
       let move = moves[Math.floor(Math.random() * moves.length)];
       let chance = Math.random()*100;
-      if(chance <= this.survivalFind){this.grid.grid[y + move[0]][x + move[1]] = 'h';}
+      if(chance < this.survivalFind){this.grid.grid[y + move[0]][x + move[1]] = 'h';}
     }
   }
 
