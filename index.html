@@ -4,21 +4,39 @@
     <meta charset="utf-8">
 
     <link rel="stylesheet" href='./assets/canvas.css'/>
-
+<link href="https://fonts.googleapis.com/css?family=Kirang+Haerang|Puritan" rel="stylesheet">
     <title></title>
     <script src="./bundle.js"></script>
   </head>
   <body>
-    <h1>Outbreak</h1>
-    <p> Zombies are on the loose! Watch as an outbreak unfolds and see if people kill off the zombies or become infected themselves</p>
-      <button id="openI">Instructions</button>
-      <button id="start">Start</button>
-      <button id="pause">Pause</button>
-      <button id="reset">Reset</button>
-      <button id="openC">Customize Simulation</button>
+    <div>
+    <h1 class="center big">Outbreak</h1>
+    <p class="center small"> Zombies are on the loose! Watch as an outbreak unfolds and see if the survivors can kill off the zombies or become infected themselves</p>
+    <br/>
+  </div>
+    <button id="openI">Instructions</button>
+  <!-- <div class="top-buttons">
+    <div>
+       <div class="inner-left"> -->
+       <div class='canvas-button-holder'>
+       <ul class="button-list">
+         <li><button id="start">Start</button></li>
+         <li><button id="pause">Pause</button></li>
+         <li><button id="reset">Reset</button></li>
+      </ul>
+      <!-- </div>
+     <div class="inner-right"> -->
+
+
+      <!-- </div>
+    </div>
+  </div> -->
       <canvas class="cstyle" width="800" height="600" id="canvas"></canvas>
+    </div>
+      <button id="openC">Customize Simulation</button>
       <button id="addPeople">Add People</button>
       <button id="addZombies">Add Zombies</button>
+
 
       <div class="instruction-background" id="instruction-background">
         <div class="instruction-modal"><span class="close" id="close">&times;</span>instruction
@@ -62,7 +80,7 @@
         </div>
       </div>
       <div class="none">
-          <img id="zombie" src="./assets/zombie.jpg"/>
+          <img id="zombie" src="./assets/zombie.png"/>
           <img id="human" src="./assets/human.jpg"/>
       </div>
   </body>

@@ -1,12 +1,19 @@
 
-
+body {
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  /* background-color: black; */
+}
 .cstyle {
   border: 2px black solid;
+  background-color: darkgrey;
   /* margin: auto; */
-  position: fixed;
+  /* position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
 .none {
@@ -113,10 +120,53 @@ input {
 #simSpeed {
   width: 50px;
 }
-/* .table tr td input{
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+
+}
+
+.big {
+  font-size: 50px;
+  font-family: Kirang Haerang;
+}
+
+.small {
+  font-family: Puritan;
+}
+
+.top-buttons div {
+  width: 600px;
   margin: auto;
+
+}
+
+/* .inner-left {
+  float: left;
 } */
-/* .person{
-  width: 150px;
-  height: 100%;
-} */
+
+.inner-right {
+float: left;
+}
+
+#openI {
+  position: absolute;
+  left: 90%;
+  bottom: 95%;
+}
+
+.button-list {
+  list-style: none;
+}
+
+.button-list li button{
+  height: 200px;
+  width: 200px;
+
+}
+
+.canvas-button-holder {
+  display: flex;
+}

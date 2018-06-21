@@ -47,7 +47,8 @@ generateGrid () {
           // ctx.fillRect(j*20,i*20,20,20);
           break;
           case 'b':
-          ctx.fillStyle = "#fcfcfc";
+          ctx.fillStyle = "darkgrey";
+          // ctx.fillStyle = "#fcfcfc";
           ctx.fillRect(j*20,i*20,20,20);
           break;
         }
