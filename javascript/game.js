@@ -39,16 +39,16 @@ class Game {
       clearInterval(this.process);
       this.grid.grid = this.grid.generateGrid();
       this.ctx.font = "75px Arial";
-      this.ctx.fillStyle = "blue";
+      this.ctx.fillStyle = "black";
       if (human === 0) {this.ctx.fillText("Zombies Win!",170,320);}
       if (zombie === 0) {this.ctx.fillText("The People Survived!",40,320);}
     }
   }
 
-  updateGrid(x,y) {
-    const newX = (x % 20) / 20;
-    const newY = (y % 20) / 20;
-    this.grid.grid[newY][newX] = 'z';
+  updateGrid(x,y,item) {
+    const newX = Math.floor(x / 20);
+    const newY = Math.floor(y / 20);
+    this.grid.grid[newY][newX] = item;
   }
 
   encounter() {
@@ -86,7 +86,7 @@ class Game {
       if (humans.length === zombies.length){
         if(chance < this.equalInfection) {this.grid.grid[human[0]][human[1]] = 'z';}
         if (chance >= this.equalInfection && chance < this.equalInfection + this.equalKill)
-        console.log(this.equalInfection + this.equalKill); {this.grid.grid[y][x] = 'b';}
+         {this.grid.grid[y][x] = 'b';}
       }
       if (humans.length < zombies.length){
         if(chance < this.zombieInfection) {this.grid.grid[human[0]][human[1]] = 'z';}

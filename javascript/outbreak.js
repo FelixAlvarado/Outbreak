@@ -12,11 +12,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const start = document.getElementById('start');
   const pause = document.getElementById('pause');
   const reset = document.getElementById('reset');
+  const peopleButton = document.getElementById('addPeople');
+  const zombieButton = document.getElementById('addZombies');
+  let clickItem = 'none';
+
+  peopleButton.addEventListener("click", () => {
+    clickItem = 'h';
+  });
+
+  zombieButton.addEventListener("click", () => {
+    clickItem = 'z';
+  });
 
   canvas.addEventListener("click", (e) => {
+    if (clickItem !== 'none') {
     const x = e.clientX - canvas.offsetLeft + 400;
     const y = e.clientY - canvas.offsetTop + 300;
-    game.updateGrid(x,y);
+    game.updateGrid(x,y, clickItem);
+    }
   });
 
   start.addEventListener('click',() => {
