@@ -18,19 +18,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
   peopleButton.addEventListener("click", () => {
     clickItem = 'h';
-
+    //trying to modify button css with add people
+    // peopleButton.style.backgroundColor = "#19191c";
+    // zombieButton.style.backgroundColor = "#4f1d4f";
+    // zombieButton.addEventListener("mouseover", () => {
+    //   zombieButton.style.backgroundColor = " #a020a0";
+    // });
+    // zombieButton.addEventListener("mouseleave", () => {
+    //   if (zombieButton.style.backgroundColor === " #a020a0") {
+    //   zombieButton.style.backgroundColor = " #4f1d4f";
+    // }
+    // });
   });
 
   zombieButton.addEventListener("click", () => {
     clickItem = 'z';
+    // zombieButton.style.backgroundColor = "#19191c";
+    // peopleButton.style.backgroundColor = "#3d3a3d";
   });
 
   canvas.addEventListener("click", (e) => {
     if (clickItem !== 'none') {
     const x = e.clientX - canvas.offsetLeft;
     const y = e.clientY - canvas.offsetTop;
-    console.log(x);
-    console.log(y);
+
     game.updateGrid(x,y, clickItem);
     }
   });
