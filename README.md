@@ -73,3 +73,36 @@ In this code, potential moves are determined by the temperary grid and used to u
 Outbreak allows players to manipulate every aspect of a zombie encounter however they'd like. The following table shows things that the player can modify:
 
 ![](https://s15.postimg.cc/fbfv0iksr/Screen_Shot_2018-06-22_at_10.04.51_AM.png)
+
+A major factor for encounters is the amount of neighbors a zombie or person has. In the following code, the amount of neighbors each party has is calculated, and used to enforce a certain probablility: 
+
+```javaScript 
+let humans = Survival.getHumans(this.grid.grid,y,x);
+    if (humans.length > 0){
+      let human = humans[Math.floor(Math.random()* humans.length)];
+      let chance = Math.random()*100;
+      let zombies = Survival.getZombies(this.grid.grid,y,x);
+      if (humans.length > zombies.length){
+        if(chance < this.personInfection) {this.grid.grid[human[0]][human[1]] = 'z';}
+        if (chance >= this.personInfection && chance < this.personInfection + this.personKill) {this.grid.grid[y][x] = 'b';}
+      }
+      if (humans.length === zombies.length){
+        if(chance < this.equalInfection) {this.grid.grid[human[0]][human[1]] = 'z';}
+        if (chance >= this.equalInfection && chance < this.equalInfection + this.equalKill)
+         {this.grid.grid[y][x] = 'b';}
+      }
+      if (humans.length < zombies.length){
+        if(chance < this.zombieInfection) {this.grid.grid[human[0]][human[1]] = 'z';}
+        if (chance >= this.zombieInfection && chance < this.zombieInfection + this.zombieKill) {this.grid.grid[y][x] = 'b';}
+      }
+  ```
+  At this point, the player input from the table has already been converted as a class variable, making it assessible both here, and other places where the inputs are needed.
+  
+  # Things to Note
+
+In the near future, I plan on coming back to this project and adding new features. These include:
+
+* Making zombie intelligence a trait the player can modify
+* Adding stamia to people so they can only run for so long before getting tired
+* Adding energy to zombies so they die out if they have not eaten
+  
