@@ -112,18 +112,18 @@ document.addEventListener("DOMContentLoaded", function () {
   equalEscape.value = 25;
 
   const personInfection = document.getElementById('personInfection');
-  personInfection.value = 30;
+  personInfection.value = 25;
   const personKill = document.getElementById('personKill');
-  personKill.value = 35;
+  personKill.value = 50;
   const personEscape = document.getElementById('personEscape');
-  personEscape.value = 35;
+  personEscape.value = 25;
 
   const zombieInfection = document.getElementById('zombieInfection');
-  zombieInfection.value = 70;
+  zombieInfection.value = 60;
   const zombieKill = document.getElementById('zombieKill');
-  zombieKill.value = 15;
+  zombieKill.value = 20;
   const zombieEscape = document.getElementById('zombieEscape');
-  zombieEscape.value = 15;
+  zombieEscape.value = 20;
 
   const survivalFind = document.getElementById('survivalFind');
   survivalFind.value = .5;
@@ -136,12 +136,12 @@ document.addEventListener("DOMContentLoaded", function () {
       equalInfection.value = 50;
       equalKill.value = 25;
       equalEscape.value = 25;
-      personInfection.value = 30;
-      personKill.value = 35;
-      personEscape.value = 35;
-      zombieInfection.value = 70;
-      zombieKill.value = 15;
-      zombieEscape.value = 15;
+      personInfection.value = 25;
+      personKill.value = 50;
+      personEscape.value = 25;
+      zombieInfection.value = 60;
+      zombieKill.value = 20;
+      zombieEscape.value = 20;
       survivalFind.value = .5;
       simSpeed.value = .1;
   });
