@@ -16,7 +16,7 @@ class Game {
         if (space === 'z'){zombieCount++;}
         if (space === 'h'){humanCount++;}
         if (space !== 'b'){
-          let moves = this.grid.getMoves(tempGrid,i,j);
+          let moves = this.grid.getMoves(tempGrid,i,j,space);
           if(moves.length > 0){
             let direction = Math.floor(Math.random() * moves.length);
             let move = moves[direction];
