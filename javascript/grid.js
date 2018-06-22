@@ -1,9 +1,4 @@
-// var canvas = document.getElementById('canvas');
-// var c = canvas.getContext('2d');
-// c.fillStyle = "red";
-// c.fillRect(0,0,40,40);
-
-
+import {includesArray} from './util';
 class Grid {
   constructor(zombie, human) {
     this.grid = this.generateGrid();
@@ -29,50 +24,73 @@ generateGrid () {
     if (y < 29 && grid[y+1][x] === 'b') {result.push([1,0]);}
     if (x > 0 && grid[y][x-1] === 'b') {result.push([0,-1]);}
     if (x < 39 && grid[y][x+1] === 'b') {result.push([0,1]);}
-    if (space === 'z' && result.length > 0){
+    if ( result.length > 0){
       return this.closeMoves(grid,y,x,result);
     }
     return result;
   }
 
   closeMoves(grid,y,x,arr) {
+    let type;
+    if (grid[y][x] === 'z'){
+      type = 'h';
+    } else {
+      type = 'z';
+    }
     let newArr = [];
-    for (let i = y - 3; i <= y + 3; i++) {
-      for (let j = x - 3; j <= x + 3; j++) {
+    for (let i = y - 10; i <= y + 10; i++) {
+      for (let j = x - 10; j <= x + 10; j++) {
         if(i > 0 && j > 0 && i < 30 && j < 40){
-        const abs = Math.abs(i - j);
-        if (grid[i][j] === 'h' && abs <= 3){
+        const abs = Math.abs(y - i) + Math.abs(x - j);
+        if (grid[i][j] === type && abs <= 10){
+          if (i === y && j > x){
+            if (includesArray(arr,[0,1]) && type === 'h'){newArr.push([abs,[0,1]]);}
+            if (includesArray(arr,[0,-1]) && type === 'z'){newArr.push([abs,[0,-1]]);}
+          }
+          if (i === y && j < x){
+            if (includesArray(arr,[0,-1]) && type === 'h'){newArr.push([abs,[0,-1]]);}
+            if (includesArray(arr,[0,1]) && type === 'z'){newArr.push([abs,[0,1]]);}
+          }
+          if (i > y && j === x){
+            if (includesArray(arr,[1,0]) && type === 'h'){newArr.push([abs,[1,0]]);}
+            if (includesArray(arr,[-1,0]) && type === 'z'){newArr.push([abs,[-1,0]]);}
+          }
+          if (i < y && j === x){
+            if (includesArray(arr,[-1,0]) && type === 'h'){newArr.push([abs,[-1,0]]);}
+            if (includesArray(arr,[1,0]) && type === 'z'){newArr.push([abs,[1,0]]);}
+          }
           if (i < y && j > x){
-            if (this.includesArray(arr,[0,1])){newArr.push([abs,[0,1]]);}
-            if (this.includesArray(arr,[-1,0])){newArr.push([abs,[-1,0]]);}
+            if (includesArray(arr,[0,1]) && type === 'h'){newArr.push([abs,[0,1]]);}
+            if (includesArray(arr,[-1,0]) && type === 'h'){newArr.push([abs,[-1,0]]);}
+            if (includesArray(arr,[0,-1]) && type === 'z'){newArr.push([abs,[0,-1]]);}
+            if (includesArray(arr,[1,0]) && type === 'z'){newArr.push([abs,[1,0]]);}
           }
           if (i < y && j < x){
-            if (this.includesArray(arr,[-1,0])){newArr.push([abs,[-1,0]]);}
-            if (this.includesArray(arr,[0,-1])){newArr.push([abs,[0,-1]]);}
+            if (includesArray(arr,[-1,0]) && type === 'h'){newArr.push([abs,[-1,0]]);}
+            if (includesArray(arr,[0,-1]) && type === 'h'){newArr.push([abs,[0,-1]]);}
+            if (includesArray(arr,[1,0]) && type === 'z'){newArr.push([abs,[1,0]]);}
+            if (includesArray(arr,[0,1]) && type === 'z'){newArr.push([abs,[0,1]]);}
           }
           if (i > y && j < x){
-            if (this.includesArray(arr,[0,-1])){newArr.push([abs,[0,-1]]);}
-            if (this.includesArray(arr,[1,0])){newArr.push([abs,[1,0]]);}
+            if (includesArray(arr,[1,0]) && type === 'h'){newArr.push([abs,[1,0]]);}
+            if (includesArray(arr,[0,-1]) && type === 'h'){newArr.push([abs,[0,-1]]);}
+            if (includesArray(arr,[-1,0]) && type === 'z'){newArr.push([abs,[-1,0]]);}
+            if (includesArray(arr,[0,1]) && type === 'z'){newArr.push([abs,[0,1]]);}
           }
           if (i > y && j > x){
-            if (this.includesArray(arr,[0,1])){newArr.push([abs,[0,1]]);}
-            if (this.includesArray(arr,[1,0])){newArr.push([abs,[1,0]]);}
+            if (includesArray(arr,[0,1]) && type === 'h'){newArr.push([abs,[0,1]]);}
+            if (includesArray(arr,[1,0]) && type === 'h'){newArr.push([abs,[1,0]]);}
+            if (includesArray(arr,[0,-1]) && type === 'z'){newArr.push([abs,[0,-1]]);}
+            if (includesArray(arr,[-1,0]) && type === 'z'){newArr.push([abs,[-1,0]]);}
           }
         }
       }
     }
   }
     if (newArr.length > 0){
-      return [newArr.sort((a) => a[0])[0][1]];
+      return [newArr.sort((a,b) => a[0] - b[0])[0][1]];
     }
     return arr;
-  }
-
-  includesArray(arr, item) {
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i].toString() === item.toString()) {return true;}
-    }
-    return false;
   }
 
   draw(ctx) {
