@@ -4,7 +4,7 @@
 
 This project is a simulation of a zombie outbreak. It was inspired by [Conway's Game of life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), which features the life and death of cells based on their neighbors .
 
-Both people and zombies will reside on a field where they can move one unit up,down, left, or right during each turn. Zombies chase the nearest person while people run away.
+Both people and zombies will reside on a field where they can move one unit up,down, left, or right during each turn. Zombies chase the nearest person while people run away from them.
 
 Each turn, a person has a 10% chance of finding another survivor as long as there are no adjacent zombies.
 
@@ -12,79 +12,64 @@ If a person and a zombie are adjacent to one another, there is a 50% change of t
 
 When a person has more adjacent people than the zombie has adjacent zombies, their survival percentages are tweeked to be in their favor. Their survival percentages decreased if the zombie has more adjacent zombies than the person has adjacent people.
 
-### MVPS
+# Technologies
 
-In Outbreak, users will be able to:
+* javaScript
+* HTML Canvas
+* Vanilla DOM 
 
-- [ ] Start, pause, and reset the simulation
-- [ ] Modify the speed of the simulation
-- [ ] Modify the starting number of people and zombies
-- [ ] Start the simulation with default percentages
-- [ ] Modify the survival and find percentages
+# Key Features
 
-Outbreak will also include:
+### Chase and Movement Logic
 
-- [ ] Instructions stating how the simulation works
+With each phase of movement, people move away from zombies while zombies move toward people. Rather than using two different functions to determine the spots based on who is about to move, I integrated them into one by switching modifying the function based on who is about to move.
 
-### Wireframes
+```javaScript 
+closeMoves(grid,y,x,arr) {
+    let type;
+    if (grid[y][x] === 'z'){
+      type = 'h';
+    } else {
+      type = 'z';
+    }
+    let newArr = [];
+    for (let i = y - 10; i <= y + 10; i++) {
+      for (let j = x - 10; j <= x + 10; j++) {
+        if(i > 0 && j > 0 && i < 30 && j < 40){
+        const abs = Math.abs(y - i) + Math.abs(x - j);
+        if (grid[i][j] === type && abs <= 10){
+          if (i === y && j > x){
+            if (includesArray(arr,[0,1]) && type === 'h'){newArr.push([abs,[0,1]]);}
+            if (includesArray(arr,[0,-1]) && type === 'z'){newArr.push([abs,[0,-1]]);}
+          }
+```
+At this point, I determined the type of the current player and used that in and algorithm that chooses the best spot to move based on the current player. The algorithm itself finds all items on interest within a 10 move radius and adds moves into a potential move array, that is later shortened into a list of moves based on which item of interest is the closest.
 
-Outbreak will be a single page with different buttons and inputs that the user can use.
+For movement, I utilized a deeply dupped temporary grid, because working with one grid would cause objects who move right or down to move again.
 
-Start, pause, reset buttons, as well as a speed toggle will be on top of the canvas display.
+```javaScript 
+const tempGrid = JSON.parse(JSON.stringify( this.grid.grid ));
+    tempGrid.forEach((arr, i) =>{
+      arr.forEach((space, j) => {
+        if (space === 'z'){zombieCount++;}
+        if (space === 'h'){humanCount++;}
+        if (space !== 'b'){
+          let moves = this.grid.getMoves(tempGrid,i,j,space);
+          if(moves.length > 0){
+            let direction = Math.floor(Math.random() * moves.length);
+            let move = moves[direction];
+              if(this.grid.grid[i + move[0]][j + move[1]] === 'b'){
+                let oldSpot = tempGrid[i][j];
+                let newSpot = tempGrid[i + move[0]][j + move[1]];
+                this.grid.grid[i][j] = newSpot;
+                this.grid.grid[i + move[0]][j + move[1]] = oldSpot;
+              }
+```
 
-Underneath, there will be an explaination of the percentages. The percentage inputs will already be filled out with default values that the user can change. If there are incorrect or blank values, the user will be alerted and the simulation won't start. The user can also press the reset button to revert back to default settings.
+In this code, potential moves are determined by the temperary grid and used to update the real grid for each item on each phase.
 
-![](https://s22.postimg.cc/ekiv7z041/wireframe_2.png)
+### Statistical Modification
 
-### Architecture and Technologies
+Outbreak allows players to manipulate every aspect of a zombie encounter however they'd like. The following table shows things that the player can modify:
 
-* Vanilla Javascicpt for game logic
-
-* HTML5 Canvas for rendering
-
-* Webpack for bundling
-
-The following files will be used for making the game:
-
-* grid.js: used for updating the display grid
-
-* survival.js: holds the logic for what happens during a player/zombie encounter
-
-* game.js: used for updating the positions of each field item
-
-### Timeline
-
-##### Over the weekend:
-Have webpack and canvas initially set up
-
-##### Day1:
-Write the grid and game logic, being sure that items are moving and render at a set interval:
-- [ ] Canvas is rendering items properly
-- [ ] Grid renders items at random positions
-- [ ] Items on the field move at a set interval
-
-##### Day2:
-Complete survival logic so zombie encounters are handled:
-- [ ] Human/Zombie encounter can result in all three outcome
-- [ ] There is a start user interaction
-
-##### Day3:
-Add aditional user features:
-- [ ] There is a pause and reset button
-- [ ] The user can modify the speed of the simulation
-- [ ] Game survival percentages are changed based on user input
-
-##### Day4:
-Add finished touches for app appeal:
-- [ ] CSS makes the app look clean and polished
-- [ ] Alerts are added for if the user puts incorrect values
-- [ ] There is a reset value button
-- [ ] Explainations and overviews are added
-
-### Bonus Features
-
-If there is time, I will add the following features:
-- [ ] Energy levels that can decrease if the person encounters a zombie. Would affect thier survaval rate
-- [ ] Weapon find percentages that increase a person's chance of survival
-- [ ] A mutation attribute that would increase the zombie's chance of infection
-- [ ] The ability to increase the grid size
+![](https://s15.postimg.cc/fbfv0iksr/Screen_Shot_2018-06-22_at_10.04.51_AM.png)
