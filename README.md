@@ -2,6 +2,8 @@
 
 ### Overview
 
+[Check it out here!](https://felixalvarado.github.io/Outbreak/)
+
 This project is a simulation of a zombie outbreak. It was inspired by [Conway's Game of life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), which features the life and death of cells based on their neighbors .
 
 Both people and zombies will reside on a field where they can move one unit up,down, left, or right during each turn. Zombies chase the nearest person while people run away from them.
