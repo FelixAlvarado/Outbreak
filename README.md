@@ -22,6 +22,8 @@ When a person has more adjacent people than the zombie has adjacent zombies, the
 
 # Key Features
 
+![Text](https://s15.postimg.cc/j5sqtrpt7/ezgif.com-video-to-gif.gif)
+
 ### Chase and Movement Logic
 
 With each phase of movement, people move away from zombies while zombies move toward people. Rather than using two different functions to determine the spots based on who is about to move, I integrated them into one by switching modifying the function based on who is about to move.
