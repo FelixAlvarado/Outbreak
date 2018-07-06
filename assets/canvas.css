@@ -101,6 +101,7 @@ padding: 0px 0px 33px 0px;
   border: 1px solid black;
   text-align: left;
   margin: auto;
+  font-family: Puritan;
 }
 
 .table tr th {
@@ -272,4 +273,9 @@ float: left;
   width: 100px;
   position: relative;
   right: -2px;
+}
+
+input {
+  font-family: Puritan;
+  font-size: 14px;
 }
